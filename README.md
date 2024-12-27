@@ -2,7 +2,7 @@
 
 # KlaroWF
 *Klaro built on Windows Forms*
-A super duper absolutely mega basic GUI wrapper for Jpeg2png in C#.NET and Windows Forms.
+- An absolutely barebones GUI wrapper for Jpeg2png in C#.NET and Windows Forms.
 
 ## Notice
 Klaro is absolutely barebones that it doesn't even have a way to set flags provided by Jpeg2png, some bugs
