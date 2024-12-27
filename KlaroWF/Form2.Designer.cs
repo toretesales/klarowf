@@ -100,6 +100,7 @@
             linkVictorvde.TabStop = true;
             linkVictorvde.Text = "jpeg2png Github Page";
             linkVictorvde.TextAlign = ContentAlignment.MiddleCenter;
+            linkVictorvde.LinkClicked += linkVictorvde_LinkClicked;
             // 
             // label3
             // 

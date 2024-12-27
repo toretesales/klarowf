@@ -214,51 +214,53 @@ namespace KlaroWF
             if (selectedFiles == null || selectedFiles.Count == 0)
             {
                 MessageBox.Show("Please select at least one valid image file.", "No Image Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;  // Exit if no file is selected
+                return; // Exit if no file is selected
             }
 
-            // Validate the output folder path
-            if (string.IsNullOrEmpty(outputFolder))
+            // Validate the output folder
+            if (string.IsNullOrEmpty(outputFolder) || outputFolder == "Please select a folder")
             {
-                MessageBox.Show("Please select an output folder.", "Output Folder Not Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Exit if the output folder path is empty
+                MessageBox.Show("Please select a valid output folder before converting.", "No Output Folder", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnSelectFolder.PerformClick(); // Open the folder selection dialog
+                return; // Exit without processing
             }
 
-            // Check if the output folder still exists
             if (!Directory.Exists(outputFolder))
             {
-                DialogResult result = MessageBox.Show(
-                    "The selected output folder does not exist or has been deleted. Would you like to recreate it?",
-                    "Output Folder Missing",
+                // Notify the user and confirm folder recreation
+                DialogResult dialogResult = MessageBox.Show(
+                    $"The folder '{outputFolder}' does not exist.\nWould you like to create it?",
+                    "Missing Output Folder",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
+                    MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
+                if (dialogResult == DialogResult.Yes)
                 {
                     try
                     {
-                        Directory.CreateDirectory(outputFolder); // Recreate the folder
+                        Directory.CreateDirectory(outputFolder);
+                        MessageBox.Show($"Folder '{outputFolder}' was successfully created.", "Folder Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"An error occurred while attempting to recreate the folder: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; // Exit if folder creation fails
+                        MessageBox.Show($"Failed to create folder '{outputFolder}': {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Stop processing if folder creation fails
                     }
                 }
                 else
                 {
-                    return; // Exit if the user chooses not to recreate the folder
+                    MessageBox.Show("Please select a valid output folder before proceeding.", "Action Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Exit without running conversions
                 }
             }
 
             // Loop through the selected files and run the conversion for each file
             foreach (var inputFile in selectedFiles)
             {
-                if (!File.Exists(inputFile))  // Validate each selected file
+                if (!File.Exists(inputFile)) // Validate each selected file
                 {
                     MessageBox.Show($"File '{inputFile}' does not exist or is invalid.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    continue;  // Skip the current file and continue with the next one
+                    continue; // Skip the current file and continue with the next one
                 }
 
                 // Call the method to run jpeg2png for the current file
@@ -631,5 +633,13 @@ namespace KlaroWF
                 MessageBox.Show($"An error occurred while trying to open the last output folder: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

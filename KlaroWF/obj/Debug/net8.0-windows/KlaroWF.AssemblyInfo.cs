@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KlaroWF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2775dc3404be56d9ff79aa973ccf6f557f24441")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e4fd92b1c17784a43eb5bf88ffc116b23d69415")]
 [assembly: System.Reflection.AssemblyProductAttribute("KlaroWF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KlaroWF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -287,6 +287,7 @@
             Padding = new Padding(12);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "KlaroWF";
+            Load += Form1_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);

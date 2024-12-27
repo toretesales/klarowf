@@ -28,6 +28,7 @@ namespace KlaroWF
 
         }
 
+        //This code is unecessary will be removed in the future
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -51,6 +52,23 @@ namespace KlaroWF
             {
                 // The URL to open
                 string url = "https://mozilla.org/MPL/2.0/";
+
+                // Launch the default web browser to open the URL
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                // Handle errors (e.g., no default browser installed)
+                MessageBox.Show($"Failed to open the link. Error: {ex.Message}");
+            }
+        }
+
+        private void linkVictorvde_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                // The URL to open
+                string url = "https://github.com/victorvde/jpeg2png";
 
                 // Launch the default web browser to open the URL
                 Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
