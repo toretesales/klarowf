@@ -18,7 +18,7 @@ graduated and shifted to a different program on college.
 ## Features
 - Decodes and converts JPEG files to PNGs by utilising Jpeg2png.
 - Have the ability to select a file from one directory and have the converted file to a different one.
-- Utilise a workaround to do conversions more than one file at the same time by using a `foreach` loop for every image that was selected through KLaro.
+- Utilise a workaround to do conversions more than one file at the same time by using a `foreach` loop for every image that was selected through Klaro.
 
  
 
