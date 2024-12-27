@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ezekiel Isleta\\source\\repos\\KlaroWF\\KlaroWF\\KlaroWF.csproj",
+      "projectUniqueName": "C:\\Users\\Ezekiel Isleta\\Documents\\GitHub\\klarowinforms\\KlaroWF\\KlaroWF.csproj",
       "projectName": "KlaroWF",
-      "projectPath": "C:\\Users\\Ezekiel Isleta\\source\\repos\\KlaroWF\\KlaroWF\\KlaroWF.csproj",
+      "projectPath": "C:\\Users\\Ezekiel Isleta\\Documents\\GitHub\\klarowinforms\\KlaroWF\\KlaroWF.csproj",
       "packagesPath": "C:\\Users\\Ezekiel Isleta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ezekiel Isleta\\source\\repos\\KlaroWF\\KlaroWF\\obj\\",
+      "outputPath": "C:\\Users\\Ezekiel Isleta\\Documents\\GitHub\\klarowinforms\\KlaroWF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

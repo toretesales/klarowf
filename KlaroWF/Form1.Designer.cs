@@ -36,6 +36,8 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            pictureBox3 = new PictureBox();
+            linkOpenCurrentFolder = new LinkLabel();
             pictureBox2 = new PictureBox();
             btnSelectFolder = new Button();
             lblFolderPath = new Label();
@@ -49,15 +51,16 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // lblSelectedImage
             // 
-            lblSelectedImage.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSelectedImage.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSelectedImage.Location = new Point(64, 22);
             lblSelectedImage.Name = "lblSelectedImage";
-            lblSelectedImage.Size = new Size(504, 114);
+            lblSelectedImage.Size = new Size(514, 104);
             lblSelectedImage.TabIndex = 2;
             lblSelectedImage.Text = "No Selected Photos";
             // 
@@ -107,6 +110,8 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(251, 251, 251);
+            panel2.Controls.Add(pictureBox3);
+            panel2.Controls.Add(linkOpenCurrentFolder);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(btnSelectFolder);
             panel2.Controls.Add(lblFolderPath);
@@ -117,6 +122,32 @@
             panel2.Padding = new Padding(12);
             panel2.Size = new Size(593, 198);
             panel2.TabIndex = 6;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.ic_fluent_open_24_filled;
+            pictureBox3.Location = new Point(24, 151);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(20, 20);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 14;
+            pictureBox3.TabStop = false;
+            // 
+            // linkOpenCurrentFolder
+            // 
+            linkOpenCurrentFolder.ActiveLinkColor = Color.DarkBlue;
+            linkOpenCurrentFolder.AutoSize = true;
+            linkOpenCurrentFolder.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkOpenCurrentFolder.LinkBehavior = LinkBehavior.NeverUnderline;
+            linkOpenCurrentFolder.LinkColor = Color.DarkBlue;
+            linkOpenCurrentFolder.Location = new Point(47, 151);
+            linkOpenCurrentFolder.Name = "linkOpenCurrentFolder";
+            linkOpenCurrentFolder.Size = new Size(150, 20);
+            linkOpenCurrentFolder.TabIndex = 12;
+            linkOpenCurrentFolder.TabStop = true;
+            linkOpenCurrentFolder.Text = "Open selected folder";
+            linkOpenCurrentFolder.TextAlign = ContentAlignment.MiddleLeft;
+            linkOpenCurrentFolder.LinkClicked += linkOpenCurrentFolder_LinkClicked;
             // 
             // pictureBox2
             // 
@@ -140,18 +171,18 @@
             // 
             // lblFolderPath
             // 
-            lblFolderPath.Location = new Point(22, 151);
+            lblFolderPath.Location = new Point(22, 77);
             lblFolderPath.Name = "lblFolderPath";
-            lblFolderPath.Size = new Size(398, 20);
+            lblFolderPath.Size = new Size(556, 20);
             lblFolderPath.TabIndex = 4;
             lblFolderPath.Text = "Please select a folder";
             // 
             // lblFolderName
             // 
-            lblFolderName.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFolderName.Location = new Point(64, 22);
+            lblFolderName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFolderName.Location = new Point(64, 24);
             lblFolderName.Name = "lblFolderName";
-            lblFolderName.Size = new Size(514, 114);
+            lblFolderName.Size = new Size(514, 32);
             lblFolderName.TabIndex = 2;
             lblFolderName.Text = "No Folder for Converted Images";
             // 
@@ -259,6 +290,8 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -282,5 +315,7 @@
         private FlowLayoutPanel flpImagePreview;
         private Button btnOpenTemp;
         private LinkLabel linkAbtKlaro;
+        private LinkLabel linkOpenCurrentFolder;
+        private PictureBox pictureBox3;
     }
 }

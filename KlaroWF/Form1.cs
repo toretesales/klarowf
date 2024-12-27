@@ -90,7 +90,7 @@ namespace KlaroWF
                     // Update the display label for file paths and selected image count
                     if (selectedFiles.Count > 1)
                     {
-                        lblSelectedImage.Text = "More than one file is selected";  // More than one file selected
+                        lblSelectedImage.Text = "Multiple Files are Selected";
                         lblFilePath.Text = $"{selectedFiles.Count} files selected";  // Display the number of files selected
                     }
                     else
@@ -217,11 +217,39 @@ namespace KlaroWF
                 return;  // Exit if no file is selected
             }
 
-            // Validate the output folder
-            if (string.IsNullOrEmpty(outputFolder) || !Directory.Exists(outputFolder))
+            // Validate the output folder path
+            if (string.IsNullOrEmpty(outputFolder))
             {
-                MessageBox.Show("Please select a valid output folder.", "Invalid Output", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;  // Exit if the folder isn't valid
+                MessageBox.Show("Please select an output folder.", "Output Folder Not Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Exit if the output folder path is empty
+            }
+
+            // Check if the output folder still exists
+            if (!Directory.Exists(outputFolder))
+            {
+                DialogResult result = MessageBox.Show(
+                    "The selected output folder does not exist or has been deleted. Would you like to recreate it?",
+                    "Output Folder Missing",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        Directory.CreateDirectory(outputFolder); // Recreate the folder
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while attempting to recreate the folder: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Exit if folder creation fails
+                    }
+                }
+                else
+                {
+                    return; // Exit if the user chooses not to recreate the folder
+                }
             }
 
             // Loop through the selected files and run the conversion for each file
@@ -237,6 +265,7 @@ namespace KlaroWF
                 RunJpeg2PngAsync(inputFile, outputFolder);
             }
         }
+
 
 
         // Add a delay for Klaro to move the converted file to the desired directory
@@ -564,6 +593,43 @@ namespace KlaroWF
         {
             AboutForm form2 = new AboutForm();
             form2.ShowDialog();
+        }
+
+        private void linkOpenCurrentFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                // Load the last saved output folder
+                string lastOutputFolder = LoadLastOutputFolder();
+
+                if (string.IsNullOrEmpty(lastOutputFolder))
+                {
+                    // If no folder was saved, notify the user
+                    MessageBox.Show($"No output folder found, please select an output folder first.{Environment.NewLine}{Environment.NewLine}This might occur when you have deleted the 'config.txt' file or removed its contents, a new one will be automatically generated once you select a new folder.", "Folder Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Ensure the directory exists
+                if (!Directory.Exists(lastOutputFolder))
+                {
+                    // Notify the user if the directory no longer exists
+                    MessageBox.Show($"The previously selected output folder does not exist, please choose another folder.{Environment.NewLine}{Environment.NewLine}This might occur when you have deleted the 'config.txt' file or removed its contents, a new one will be automatically generated once you select a new folder.", "Folder Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Open the last saved output folder in the file explorer
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = lastOutputFolder,
+                    UseShellExecute = true, // Use the system's default file explorer
+                    Verb = "open" // Open the folder
+                });
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors that might occur
+                MessageBox.Show($"An error occurred while trying to open the last output folder: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
