@@ -99,12 +99,12 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.ic_fluent_image_24_regular;
-            pictureBox1.Location = new Point(22, 22);
+            pictureBox1.Image = Properties.Resources.im;
+            pictureBox1.Location = new Point(15, 15);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(36, 36);
+            pictureBox1.Size = new Size(48, 48);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 10;
+            pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // panel2
@@ -125,12 +125,12 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.ic_fluent_open_24_filled;
-            pictureBox3.Location = new Point(24, 151);
+            pictureBox3.Image = Properties.Resources.fo;
+            pictureBox3.Location = new Point(15, 15);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(20, 20);
+            pictureBox3.Size = new Size(48, 48);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 14;
+            pictureBox3.TabIndex = 0;
             pictureBox3.TabStop = false;
             // 
             // linkOpenCurrentFolder
@@ -151,12 +151,12 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.ic_fluent_folder_24_regular;
-            pictureBox2.Location = new Point(22, 22);
+            pictureBox2.Image = Properties.Resources.re;
+            pictureBox2.Location = new Point(22, 151);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(36, 36);
+            pictureBox2.Size = new Size(20, 20);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 11;
+            pictureBox2.TabIndex = 13;
             pictureBox2.TabStop = false;
             // 
             // btnSelectFolder

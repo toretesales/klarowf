@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>bin\Debug\net8.0-windows\Klaro.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Klaro.ico</ApplicationIcon>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
@@ -15,7 +15,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="bin\Debug\net8.0-windows\Klaro.ico" />
+    <None Remove="Resources\about.png" />
+    <None Remove="Resources\fl.png" />
+    <None Remove="Resources\fo.png" />
+    <None Remove="Resources\im.png" />
+    <None Remove="Resources\op.png" />
+    <None Remove="Resources\re.png" />
+    <None Remove="Resources\Title.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Klaro.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\about.png" />
+    <Resource Include="Resources\fl.png" />
+    <Resource Include="Resources\fo.png" />
+    <Resource Include="Resources\im.png" />
+    <Resource Include="Resources\op.png" />
+    <Resource Include="Resources\re.png" />
+    <Resource Include="Resources\Title.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +51,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net8.0-windows\" />
   </ItemGroup>
 
 </Project>

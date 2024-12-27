@@ -73,9 +73,9 @@ namespace KlaroWF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_fluent_folder_24_regular {
+        internal static System.Drawing.Bitmap fo {
             get {
-                object obj = ResourceManager.GetObject("ic_fluent_folder_24_regular", resourceCulture);
+                object obj = ResourceManager.GetObject("fo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace KlaroWF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_fluent_image_24_regular {
+        internal static System.Drawing.Bitmap im {
             get {
-                object obj = ResourceManager.GetObject("ic_fluent_image_24_regular", resourceCulture);
+                object obj = ResourceManager.GetObject("im", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,29 +93,9 @@ namespace KlaroWF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_fluent_open_24_filled {
+        internal static System.Drawing.Bitmap re {
             get {
-                object obj = ResourceManager.GetObject("ic_fluent_open_24_filled", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Klaro500 {
-            get {
-                object obj = ResourceManager.GetObject("Klaro500", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Title {
-            get {
-                object obj = ResourceManager.GetObject("Title", resourceCulture);
+                object obj = ResourceManager.GetObject("re", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

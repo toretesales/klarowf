@@ -45,11 +45,11 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.about;
-            pictureBox1.Location = new Point(27, 66);
+            pictureBox1.Location = new Point(0, 56);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(428, 89);
+            pictureBox1.Size = new Size(482, 101);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 3;
+            pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
             // panel1
@@ -69,12 +69,12 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.ic_fluent_open_24_filled;
-            pictureBox2.Location = new Point(31, 323);
+            pictureBox2.Image = Properties.Resources.re;
+            pictureBox2.Location = new Point(27, 319);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(16, 16);
+            pictureBox2.Size = new Size(20, 20);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 13;
+            pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
             // 
             // linkMPL2
