@@ -24,5 +24,45 @@ graduated and shifted to a different program on college.
 - Have the ability to select a file from one directory and have the converted file to a different one.
 - Utilise a workaround to do conversions more than one file at the same time by using a `foreach` loop for every image that was selected through Klaro.
 
+## Installation
+
+There is no installer Klaro but you can download the latest version on the releases page
+and extract the zip to any directory, but I recommend extracting it somewhere you can quickly access if ever you
+wish to remove Klaro from your computer like the Downloads folder.
+
+If `jpeg2png.exe` is not included when you extracted the .zip file, you may download it from
+here: https://github.com/victorvde/jpeg2png
+
+And place `jpeg2png` on the same folder as `KlaroWF.exe`
+
+###Optional
+
+This one is optional but if you want to access Klaro on the start menu or add
+the ability to pin it to the taskbar you can do so with this:
+
+Go to the folder of where `KlaroWF.exe` is located
+
+Right click `KlaroWF.exe` > `Create shortcut`
+If you're on Windows 11, right click `KlaroWF.exe` > `Show more options` > `Create shortcut`
+![image](https://github.com/user-attachments/assets/b952f003-b30c-456b-9ebd-d3c7bbddebad)
+
+
+Rename the shortcut to anything you wish.
+![image](https://github.com/user-attachments/assets/7263cb7b-7dd0-4eb1-8f26-4d53cee86875)
+
+
+Now head to the Start Menu folder, typically you can access it by:
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs
+
+Or, if you have installed any windows programs with a traditional installer wizard, open the start
+menu and right click any programs you've installed that used an installer wizard.
+
+Once you've right click an app, click `More` > `Open file location`
+
+And move the shortcut to that folder. And it should immediately appear on the start menu.
+![image](https://github.com/user-attachments/assets/c494dd91-92b0-4fd9-8e87-97ddf1bf2115)
+
+
+
  
 
