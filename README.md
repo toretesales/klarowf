@@ -1,11 +1,12 @@
-![Klaro](https://github.com/user-attachments/assets/07d84004-135f-4153-a5fa-ed60c17fcad9)
+![Klaro]()
+<img src="https://github.com/user-attachments/assets/07d84004-135f-4153-a5fa-ed60c17fcad9" alt="Klaro logo" width="500">
 
 # KlaroWF
 *Klaro built on Windows Forms*
 - A barebones GUI wrapper for Jpeg2png in C#.NET and Windows Forms.
 
 
-<img src="https://github.com/user-attachments/assets/0e4cd9f2-188f-467b-9da9-0c2857fcdaa4" alt="Description" width="500">
+<img src="https://github.com/user-attachments/assets/0e4cd9f2-188f-467b-9da9-0c2857fcdaa4" alt="Screenshot of Klaro with an image and a faux terminal preview." width="500">
 
 
 ## Notice
