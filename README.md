@@ -28,7 +28,7 @@ graduated and shifted to a different program on college.
 
 There is no installer Klaro but you can download the latest version on the releases page
 and extract the zip to any directory, but I recommend extracting it somewhere you can quickly access if ever you
-wish to remove Klaro from your computer like the Downloads folder.
+wish to remove Klaro from your computer like extracting it to the Downloads folder.
 
 If `jpeg2png.exe` is not included when you extracted the .zip file, you may download it from
 here: https://github.com/victorvde/jpeg2png
