@@ -35,7 +35,7 @@ here: https://github.com/victorvde/jpeg2png
 
 And place `jpeg2png` on the same folder as `KlaroWF.exe`
 
-###Optional
+### Optional
 
 This one is optional but if you want to access Klaro on the start menu or add
 the ability to pin it to the taskbar you can do so with this:
