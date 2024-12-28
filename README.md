@@ -1,4 +1,3 @@
-![Klaro]()
 <img src="https://github.com/user-attachments/assets/07d84004-135f-4153-a5fa-ed60c17fcad9" alt="Klaro logo" width="500">
 
 # KlaroWF
