@@ -46,8 +46,8 @@
             Iconography = new ImageList(components);
             richTextBoxTerminal = new RichTextBox();
             flpImagePreview = new FlowLayoutPanel();
-            btnOpenTemp = new Button();
             linkAbtKlaro = new LinkLabel();
+            linkLabel1 = new LinkLabel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -57,12 +57,13 @@
             // 
             // lblSelectedImage
             // 
-            lblSelectedImage.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSelectedImage.Location = new Point(64, 22);
+            lblSelectedImage.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSelectedImage.Location = new Point(69, 20);
             lblSelectedImage.Name = "lblSelectedImage";
-            lblSelectedImage.Size = new Size(514, 104);
+            lblSelectedImage.Size = new Size(509, 36);
             lblSelectedImage.TabIndex = 2;
-            lblSelectedImage.Text = "No Selected Photos";
+            lblSelectedImage.Text = "No Selected Images";
+            lblSelectedImage.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // btnSelectPhoto
             // 
@@ -71,16 +72,16 @@
             btnSelectPhoto.Name = "btnSelectPhoto";
             btnSelectPhoto.Size = new Size(133, 44);
             btnSelectPhoto.TabIndex = 3;
-            btnSelectPhoto.Text = "Select Photo";
+            btnSelectPhoto.Text = "Select Image";
             btnSelectPhoto.UseVisualStyleBackColor = true;
             // 
             // lblFilePath
             // 
             lblFilePath.Location = new Point(22, 151);
             lblFilePath.Name = "lblFilePath";
-            lblFilePath.Size = new Size(398, 20);
+            lblFilePath.Size = new Size(391, 20);
             lblFilePath.TabIndex = 4;
-            lblFilePath.Text = "Please select at least one";
+            lblFilePath.Text = "Select at least one";
             // 
             // panel1
             // 
@@ -171,7 +172,7 @@
             // 
             // lblFolderPath
             // 
-            lblFolderPath.Location = new Point(22, 77);
+            lblFolderPath.Location = new Point(15, 78);
             lblFolderPath.Name = "lblFolderPath";
             lblFolderPath.Size = new Size(556, 20);
             lblFolderPath.TabIndex = 4;
@@ -179,17 +180,18 @@
             // 
             // lblFolderName
             // 
-            lblFolderName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFolderName.Location = new Point(64, 24);
+            lblFolderName.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFolderName.Location = new Point(69, 23);
             lblFolderName.Name = "lblFolderName";
-            lblFolderName.Size = new Size(514, 32);
+            lblFolderName.Size = new Size(509, 32);
             lblFolderName.TabIndex = 2;
             lblFolderName.Text = "No Folder for Converted Images";
+            lblFolderName.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // btnConvert
             // 
             btnConvert.BackColor = Color.FromArgb(251, 251, 251);
-            btnConvert.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConvert.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnConvert.ForeColor = SystemColors.ControlText;
             btnConvert.ImageIndex = 0;
             btnConvert.ImageList = Iconography;
@@ -209,6 +211,8 @@
             Iconography.TransparentColor = Color.Transparent;
             Iconography.Images.SetKeyName(0, "ic_fluent_flash_on_24_filled.png");
             Iconography.Images.SetKeyName(1, "ic_fluent_folder_open_24_filled.png");
+            Iconography.Images.SetKeyName(2, "fo.png");
+            Iconography.Images.SetKeyName(3, "del.png");
             // 
             // richTextBoxTerminal
             // 
@@ -226,7 +230,7 @@
             // flpImagePreview
             // 
             flpImagePreview.AutoScroll = true;
-            flpImagePreview.BackColor = Color.FromArgb(224, 224, 224);
+            flpImagePreview.BackColor = Color.FromArgb(235, 235, 235);
             flpImagePreview.FlowDirection = FlowDirection.TopDown;
             flpImagePreview.Location = new Point(15, 15);
             flpImagePreview.Name = "flpImagePreview";
@@ -234,21 +238,6 @@
             flpImagePreview.Size = new Size(502, 643);
             flpImagePreview.TabIndex = 12;
             flpImagePreview.WrapContents = false;
-            // 
-            // btnOpenTemp
-            // 
-            btnOpenTemp.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnOpenTemp.ImageKey = "ic_fluent_folder_open_24_filled.png";
-            btnOpenTemp.ImageList = Iconography;
-            btnOpenTemp.Location = new Point(808, 15);
-            btnOpenTemp.Name = "btnOpenTemp";
-            btnOpenTemp.Size = new Size(159, 44);
-            btnOpenTemp.TabIndex = 11;
-            btnOpenTemp.Text = "Temp Folder";
-            btnOpenTemp.TextAlign = ContentAlignment.MiddleRight;
-            btnOpenTemp.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnOpenTemp.UseVisualStyleBackColor = true;
-            btnOpenTemp.Click += btnOpenTemp_Click;
             // 
             // linkAbtKlaro
             // 
@@ -265,14 +254,32 @@
             linkAbtKlaro.Text = "Klaro";
             linkAbtKlaro.LinkClicked += linkAbtKlaro_LinkClicked;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.ActiveLinkColor = Color.DarkBlue;
+            linkLabel1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkLabel1.ForeColor = Color.DarkBlue;
+            linkLabel1.ImageKey = "fo.png";
+            linkLabel1.ImageList = Iconography;
+            linkLabel1.LinkBehavior = LinkBehavior.HoverUnderline;
+            linkLabel1.LinkColor = Color.DarkBlue;
+            linkLabel1.Location = new Point(755, 23);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(206, 25);
+            linkLabel1.TabIndex = 14;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Open Temp";
+            linkLabel1.TextAlign = ContentAlignment.MiddleRight;
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(243, 243, 243);
             ClientSize = new Size(1140, 673);
+            Controls.Add(linkLabel1);
             Controls.Add(linkAbtKlaro);
-            Controls.Add(btnOpenTemp);
             Controls.Add(flpImagePreview);
             Controls.Add(richTextBoxTerminal);
             Controls.Add(btnConvert);
@@ -312,11 +319,10 @@
         private ImageList Iconography;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
-        private Label lblSelectIndicator;
         private FlowLayoutPanel flpImagePreview;
-        private Button btnOpenTemp;
         private LinkLabel linkAbtKlaro;
         private LinkLabel linkOpenCurrentFolder;
         private PictureBox pictureBox3;
+        private LinkLabel linkLabel1;
     }
 }

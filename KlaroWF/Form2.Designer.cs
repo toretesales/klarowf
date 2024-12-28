@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            pictureBox3 = new PictureBox();
+            linkKlaroGitHub = new LinkLabel();
             pictureBox2 = new PictureBox();
             linkMPL2 = new LinkLabel();
             linkVictorvde = new LinkLabel();
@@ -39,15 +41,16 @@
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.about;
-            pictureBox1.Location = new Point(0, 56);
+            pictureBox1.Location = new Point(0, 64);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(482, 101);
+            pictureBox1.Size = new Size(482, 84);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
@@ -55,6 +58,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(251, 251, 251);
+            panel1.Controls.Add(pictureBox3);
+            panel1.Controls.Add(linkKlaroGitHub);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(linkMPL2);
             panel1.Controls.Add(linkVictorvde);
@@ -66,6 +71,29 @@
             panel1.Padding = new Padding(12);
             panel1.Size = new Size(482, 436);
             panel1.TabIndex = 8;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.re;
+            pictureBox3.Location = new Point(27, 280);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(20, 20);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 13;
+            pictureBox3.TabStop = false;
+            // 
+            // linkKlaroGitHub
+            // 
+            linkKlaroGitHub.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkKlaroGitHub.LinkBehavior = LinkBehavior.NeverUnderline;
+            linkKlaroGitHub.Location = new Point(53, 280);
+            linkKlaroGitHub.Name = "linkKlaroGitHub";
+            linkKlaroGitHub.Size = new Size(164, 20);
+            linkKlaroGitHub.TabIndex = 14;
+            linkKlaroGitHub.TabStop = true;
+            linkKlaroGitHub.Text = "Klaro GitHub Page";
+            linkKlaroGitHub.TextAlign = ContentAlignment.MiddleLeft;
+            linkKlaroGitHub.LinkClicked += linkKlaroGitHub_LinkClicked;
             // 
             // pictureBox2
             // 
@@ -129,7 +157,7 @@
             label2.Name = "label2";
             label2.Size = new Size(428, 62);
             label2.TabIndex = 8;
-            label2.Text = "v1.0.0\r\nAn absolutely dead basic graphical user interface wrapper for Jpeg2png.";
+            label2.Text = "v1.1.0 \r\nA barebones graphical user interface wrapper for Jpeg2png.";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // AboutForm
@@ -149,6 +177,7 @@
             Text = "About Me";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
@@ -162,5 +191,7 @@
         private Label label2;
         private LinkLabel linkMPL2;
         private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
+        private LinkLabel linkKlaroGitHub;
     }
 }
