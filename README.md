@@ -14,8 +14,8 @@ might appear that I haven't come across as of yet.
 
 I'm not sure if it is possible for me to maintain this project as I only made this because I got tired of having to
 execute commands and the tedious process of putting unconverted JPEGs on a specific folder then having to move the converted
-files to where I want to put them. But you are free to fork this project and do whatever you want to do, I don't really have plans to add or fix stuff
-I am too focus on my college degree in multimedia arts.
+files to where I want to put them. But you are free to fork this project and do whatever you want to do, I don't really have plans to add or fix stuff since
+I am too focused on my college degree in multimedia arts.
 
 ## Features
 - Decodes and converts JPEG files to PNGs by utilising Jpeg2png.
