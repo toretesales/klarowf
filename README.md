@@ -45,12 +45,12 @@ Go to the folder of where `KlaroWF.exe` is located
 Right click `KlaroWF.exe` > `Create shortcut`
 If you're on Windows 11, right click `KlaroWF.exe` > `Show more options` > `Create shortcut`
 
-<img src="https://github.com/user-attachments/assets/b952f003-b30c-456b-9ebd-d3c7bbddebad" alt="A" width="400">
+<img src="https://github.com/user-attachments/assets/b952f003-b30c-456b-9ebd-d3c7bbddebad" alt="A" width="300">
 
 
 Rename the shortcut to anything you wish.
 
-<img src="https://github.com/user-attachments/assets/7263cb7b-7dd0-4eb1-8f26-4d53cee86875" alt="B" width="400">
+<img src="https://github.com/user-attachments/assets/7263cb7b-7dd0-4eb1-8f26-4d53cee86875" alt="B" width="200">
 
 
 Now head to the Start Menu folder, typically you can access it by:
