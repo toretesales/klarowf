@@ -61,10 +61,13 @@ menu and right click any programs you've installed that used an installer wizard
 
 Once you've right click an app, click `More` > `Open file location`
 
-And move the shortcut to that folder. And it should immediately appear on the start menu.
+And move the shortcut to that folder. 
 
 <img src="https://github.com/user-attachments/assets/c494dd91-92b0-4fd9-8e87-97ddf1bf2115" alt="A" width="400">
 
+And it should appear immediately, if not, you might need to wait for a few seconds.
+
+<img src="https://github.com/user-attachments/assets/9b868c48-59c2-40c4-ad5b-1511cff67d3d" alt="A" width="300">
 
 
  
