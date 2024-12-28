@@ -44,11 +44,13 @@ Go to the folder of where `KlaroWF.exe` is located
 
 Right click `KlaroWF.exe` > `Create shortcut`
 If you're on Windows 11, right click `KlaroWF.exe` > `Show more options` > `Create shortcut`
-![image](https://github.com/user-attachments/assets/b952f003-b30c-456b-9ebd-d3c7bbddebad)
+
+<img src="https://github.com/user-attachments/assets/b952f003-b30c-456b-9ebd-d3c7bbddebad" alt="A" width="400">
 
 
 Rename the shortcut to anything you wish.
-![image](https://github.com/user-attachments/assets/7263cb7b-7dd0-4eb1-8f26-4d53cee86875)
+
+<img src="https://github.com/user-attachments/assets/7263cb7b-7dd0-4eb1-8f26-4d53cee86875" alt="B" width="400">
 
 
 Now head to the Start Menu folder, typically you can access it by:
@@ -60,7 +62,8 @@ menu and right click any programs you've installed that used an installer wizard
 Once you've right click an app, click `More` > `Open file location`
 
 And move the shortcut to that folder. And it should immediately appear on the start menu.
-![image](https://github.com/user-attachments/assets/c494dd91-92b0-4fd9-8e87-97ddf1bf2115)
+
+<img src="https://github.com/user-attachments/assets/c494dd91-92b0-4fd9-8e87-97ddf1bf2115" alt="A" width="400">
 
 
 
