@@ -20,11 +20,11 @@ I am too focused on my college degree in multimedia arts.
 ## Features
 - Decodes and converts JPEG files to PNGs by utilising Jpeg2png.
 - Have the ability to select a file from one directory and have the converted file to a different one.
-- Utilise a workaround to do conversions more than one file at the same time by using a `foreach` loop for every image that was selected through Klaro.
+- Utilise a workaround to do conversions for more than one file at the same time by using a `foreach` loop for every image that was selected through Klaro.
 
 ## Installation
 
-There is no installer Klaro but you can download the latest version on the releases page
+There is no installer for wizard Klaro but you can download the latest version on the releases page
 and extract the zip to any directory, but I recommend extracting it somewhere you can quickly access if ever you
 wish to remove Klaro from your computer like extracting it to the Downloads folder.
 
