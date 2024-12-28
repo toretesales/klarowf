@@ -79,5 +79,22 @@ namespace KlaroWF
                 MessageBox.Show($"Failed to open the link. Error: {ex.Message}");
             }
         }
+
+        private void linkKlaroGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                // The URL to open
+                string url = "https://github.com/toretesales/klarowf";
+
+                // Launch the default web browser to open the URL
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                // Handle errors (e.g., no default browser installed)
+                MessageBox.Show($"Failed to open the link. Error: {ex.Message}");
+            }
+        }
     }
 }

@@ -59,57 +59,36 @@ namespace KlaroWF
         }
 
 
-        // Handler for disabling btnConvert until image and folder is selected
-        private void UpdateConvertButtonState()
-
-        {
-            // Enable btnConvert only if both photo and folder paths are set
-            btnConvert.Enabled = !string.IsNullOrWhiteSpace(lblFilePath.Text) &&
-                                 !string.IsNullOrWhiteSpace(lblFolderPath.Text);
-        }
-
         // Handler for btnSelectPhoto click (select image)
         private void btnSelectPhoto_Click(object sender, EventArgs e)
         {
             // Initialize the OpenFileDialog for selecting image files
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "JPEG Files|*.jpg;*.jpeg";  // Filter for .jpg and .jpeg files
-                openFileDialog.Title = "Select Image Files";  // Title of the dialog
-                openFileDialog.Multiselect = true;  // Allow multi-file selection
+                openFileDialog.Filter = "JPEG Files|*.jpg;*.jpeg"; // Filter for .jpg and .jpeg files
+                openFileDialog.Title = "Select Image Files";       // Title of the dialog
+                openFileDialog.Multiselect = true;                // Allow multi-file selection
 
                 // If the user selects files
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // Clear the selected files list first
-                    selectedFiles.Clear();
-
-                    // Add selected files to the list
-                    selectedFiles.AddRange(openFileDialog.FileNames);
+                    // Add selected files to the existing list (prevent duplicates)
+                    foreach (var file in openFileDialog.FileNames)
+                    {
+                        if (!selectedFiles.Contains(file))
+                        {
+                            selectedFiles.Add(file);
+                        }
+                    }
 
                     // Update the display label for file paths and selected image count
-                    if (selectedFiles.Count > 1)
-                    {
-                        lblSelectedImage.Text = "Multiple Files are Selected";
-                        lblFilePath.Text = $"{selectedFiles.Count} files selected";  // Display the number of files selected
-                    }
-                    else
-                    {
-                        lblSelectedImage.Text = Path.GetFileName(openFileDialog.FileName);  // Display single file name
-                        lblFilePath.Text = openFileDialog.FileName;  // Show the file path for the single image
-                    }
+                    UpdateStatusMessage();
 
-                    // Call method to update the preview display with selected files (now using FlowLayoutPanel or PictureBox)
-                    UpdatePreviewDisplay(selectedFiles);  // This will handle displaying images in the appropriate UI element
+                    // Update the preview display with the merged list of selected files
+                    UpdatePreviewDisplay(selectedFiles);
                 }
             }
-
-            // Enable or update the Convert button
-            UpdateConvertButtonState();
         }
-
-
-
 
         private async void ProcessBatchConversions(string outputFolder)
         {
@@ -140,31 +119,85 @@ namespace KlaroWF
         private void UpdatePreviewDisplay(List<string> selectedFiles)
         {
             // Clear existing images from FlowLayoutPanel
-            flpImagePreview.Controls.Clear();  // Assuming 'flpImagePreview' is your FlowLayoutPanel
+            flpImagePreview.Controls.Clear();
 
-            // Set FlowLayoutPanel properties to allow wrapping
-            flpImagePreview.FlowDirection = FlowDirection.LeftToRight;  // Align left to right
-            flpImagePreview.WrapContents = true;  // Automatically wrap when items exceed panel width
+            // Set FlowLayoutPanel properties
+            flpImagePreview.FlowDirection = FlowDirection.LeftToRight;
+            flpImagePreview.WrapContents = true;
+            flpImagePreview.Padding = new Padding(12);
+            flpImagePreview.VerticalScroll.Visible = true;  // Always show vertical scrollbar
 
-            // Set padding for more space between images
-            flpImagePreview.Padding = new Padding(10);
-
-            // Loop through selected files and add them to FlowLayoutPanel
             foreach (var file in selectedFiles)
             {
                 // Create PictureBox for each image
                 PictureBox picBox = new PictureBox
                 {
-                    Width = 145,  // Set PictureBox width
-                    Height = 148, // Set PictureBox height
-                    SizeMode = PictureBoxSizeMode.Zoom,  // Use Zoom to keep image proportions
-                    Image = Image.FromFile(file)  // Load the image from file path
+                    Width = 145,
+                    Height = 145,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Image = Image.FromFile(file),
+                    BackColor = Color.LightGray,
+                    Tag = file // Store the file path for removal reference
                 };
+
+                // Add click event for removal
+                picBox.Click += PictureBox_Click;
 
                 // Add PictureBox to FlowLayoutPanel
                 flpImagePreview.Controls.Add(picBox);
             }
+
+            // Update labels after refresh
+            UpdateStatusMessage();
         }
+
+
+        // To remove images individually.
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            if (sender is PictureBox clickedPictureBox)
+            {
+                // Ask the user if they really want to remove the image
+                var dialogResult = MessageBox.Show("Do you want to remove this image?", "Remove Image", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // Retrieve the file path from the PictureBox Tag
+                    string filePath = clickedPictureBox.Tag as string;
+
+                    // Remove the file path from the selectedFiles list
+                    if (selectedFiles.Contains(filePath))
+                    {
+                        selectedFiles.Remove(filePath);
+                    }
+
+                    // Refresh the FlowLayoutPanel and labels
+                    UpdatePreviewDisplay(selectedFiles);
+                }
+            }
+        }
+
+
+        // Helper method to update status messages
+        private void UpdateStatusMessage()
+        {
+            if (selectedFiles.Count > 1)
+            {
+                lblSelectedImage.Text = "Multiple Files are Selected";
+                lblFilePath.Text = $"{selectedFiles.Count} files selected";  // Display the number of files
+            }
+            else if (selectedFiles.Count == 1)
+            {
+                lblSelectedImage.Text = Path.GetFileName(selectedFiles[0]); // Single file name
+                lblFilePath.Text = selectedFiles[0]; // Single file path
+            }
+            else
+            {
+                lblSelectedImage.Text = "No files selected";
+                lblFilePath.Text = "No files selected";
+            }
+        }
+
 
 
         // Handler for btnSelectFolder click (select output folder)
@@ -190,8 +223,6 @@ namespace KlaroWF
                     SaveLastOutputFolder(folderBrowserDialog.SelectedPath);
                 }
             }
-
-            UpdateConvertButtonState(); // Ensure button state updates correctly
         }
 
         private void LoadPreviousSettings()
@@ -201,7 +232,6 @@ namespace KlaroWF
             {
                 lblFolderPath.Text = lastFolder;
                 lblFolderName.Text = Path.GetFileName(lastFolder);
-                UpdateConvertButtonState(); // Enable Convert button if everything is valid
             }
         }
 
@@ -210,7 +240,7 @@ namespace KlaroWF
         {
             string outputFolder = lblFolderPath.Text;
 
-            // Validate if at least one image is selected
+            // Validate if at least one image is in the FlowLayoutPanel (selectedFiles must be up-to-date)
             if (selectedFiles == null || selectedFiles.Count == 0)
             {
                 MessageBox.Show("Please select at least one valid image file.", "No Image Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -254,20 +284,41 @@ namespace KlaroWF
                 }
             }
 
-            // Loop through the selected files and run the conversion for each file
+            // List to hold valid files after checking their existence
+            var validFiles = new List<string>();
+
+            // Validate and process each file in selectedFiles
             foreach (var inputFile in selectedFiles)
             {
-                if (!File.Exists(inputFile)) // Validate each selected file
+                if (!File.Exists(inputFile)) // Check if the file still exists
                 {
-                    MessageBox.Show($"File '{inputFile}' does not exist or is invalid.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    continue; // Skip the current file and continue with the next one
+                    MessageBox.Show($"File '{inputFile}' does not exist or is invalid.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    continue; // Skip the current file
                 }
 
-                // Call the method to run jpeg2png for the current file
-                RunJpeg2PngAsync(inputFile, outputFolder);
+                // Add the valid file to the list for conversion
+                validFiles.Add(inputFile);
+            }
+
+            // Update the selectedFiles list to only include valid files
+            selectedFiles = validFiles;
+
+            // Update the status message with the count of valid files
+            UpdateStatusMessage();
+
+            // Check again if there are files to process after validation
+            if (selectedFiles.Count == 0)
+            {
+                MessageBox.Show("No valid files remain for conversion.", "Action Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Perform the conversion process for all valid files
+            foreach (var inputFile in selectedFiles)
+            {
+                RunJpeg2PngAsync(inputFile, outputFolder); // Run the conversion for each valid file
             }
         }
-
 
 
         // Add a delay for Klaro to move the converted file to the desired directory
@@ -440,14 +491,14 @@ namespace KlaroWF
                                 File.Move(convertedFile, outputFile);
                                 Invoke(new Action(() =>
                                 {
-                                    richTextBoxTerminal.AppendText($"{Environment.NewLine}File successfully moved to:{outputFile}{Environment.NewLine}");
+                                    richTextBoxTerminal.AppendText($"{Environment.NewLine}File successfully moved to:{outputFile}");
                                 }));
                             }
                             catch (Exception moveEx)
                             {
                                 Invoke(new Action(() =>
                                 {
-                                    richTextBoxTerminal.AppendText($"{Environment.NewLine}Error moving file: {moveEx.Message}{Environment.NewLine}");
+                                    richTextBoxTerminal.AppendText($"{Environment.NewLine}Error moving file: {moveEx.Message}");
                                 }));
                             }
                         }
@@ -455,7 +506,7 @@ namespace KlaroWF
                         {
                             Invoke(new Action(() =>
                             {
-                                richTextBoxTerminal.AppendText($"{Environment.NewLine}Conversion failed. No PNG file created.{Environment.NewLine}");
+                                richTextBoxTerminal.AppendText($"{Environment.NewLine}Conversion failed. No PNG file created.");
                             }));
                         }
                     }
@@ -463,7 +514,7 @@ namespace KlaroWF
                     {
                         Invoke(new Action(() =>
                         {
-                            richTextBoxTerminal.AppendText($"{Environment.NewLine}Error executing jpeg2png: {ex.Message}{Environment.NewLine}");
+                            richTextBoxTerminal.AppendText($"{Environment.NewLine}Error executing jpeg2png: {ex.Message}");
                         }));
                     }
                     finally
@@ -587,8 +638,7 @@ namespace KlaroWF
 
         private void btnOpenTemp_Click(object sender, EventArgs e)
         {
-            NoticeForm form3 = new NoticeForm();
-            form3.ShowDialog();
+
         }
 
         private void linkAbtKlaro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -637,9 +687,37 @@ namespace KlaroWF
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            CheckForJpeg2Png();
         }
 
+        private void CheckForJpeg2Png()
+        {
+            // Get the path of the current executable
+            string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
+            // Construct the full path for jpeg2png.exe
+            string jpeg2pngPath = Path.Combine(exeDirectory, "jpeg2png.exe");
+
+            // Check if the file exists
+            if (!File.Exists(jpeg2pngPath))
+            {
+                // Show an error message and close the application
+                MessageBox.Show(
+                    $"Error: jpeg2png.exe is missing or renamed.{Environment.NewLine}{Environment.NewLine}Please ensure the file is in the same folder as this application or rename the file back to it's original filename.",
+                    "Unable to Start Application",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                // Exit the application
+                Application.Exit();
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            NoticeForm form3 = new NoticeForm();
+            form3.ShowDialog();
+        }
     }
 }
